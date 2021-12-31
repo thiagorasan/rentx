@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
@@ -13,7 +14,10 @@ import {
     CarList
 } from './styles';
 
+
 export function Home() {
+    const navigation = useNavigation();
+
     const carData = {
         brand: 'Audi',
         name: 'R$ 5 Coupé',
@@ -22,6 +26,10 @@ export function Home() {
             price: 120,
         },
         thumbnail: 'https://production.autoforce.com/uploads/used_model/profile_image/21174071/used_model_comprar-rs-6-pcd-avant-1165_95b6930e12.png'
+    }
+
+    function handleCarDetails() {
+        navigation.navigate('CarDetails');
     }
 
     return (
@@ -45,7 +53,7 @@ export function Home() {
             <CarList 
                 data={[1, 2, 3, 4, 5, 6, 7, 8]}
                 keyExtractor={item => String(item)}
-                renderItem={({item}) => <Car data={carData} />}
+                renderItem={({item}) => <Car data={carData} onPress={handleCarDetails}/>}
             />
         </Container>
     )
