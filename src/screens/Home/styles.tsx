@@ -1,6 +1,9 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FlatList } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+import { CarDTO } from '../../dtos/carDTO';
+
+
 
 export const Container = styled.View`
     flex: 1;
@@ -42,6 +45,6 @@ export const CarList = styled(FlatList).attrs({
     font-family: ${({theme}) => theme.fonts.primary_400};
     color: ${({theme}) => theme.colors.text};
 
-`;
+`; 
 
 
