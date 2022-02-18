@@ -7,6 +7,7 @@ import api from '../../services/api';
 import { CarDTO } from '../../dtos/carDTO';
 
 import { Car } from '../../components/Car';
+import { Load } from '../../components/Load';
 
 import {
     Container,
@@ -22,8 +23,8 @@ export function Home() {
     const [loading, setLoading] = useState(true);
     const navigation = useNavigation();
 
-    function handleCarDetails() {
-        navigation.navigate('CarDetails');
+    function handleCarDetails(car: CarDTO) {
+        navigation.navigate('CarDetails', { car });
     }
 
     useEffect(() =>{
@@ -59,12 +60,13 @@ export function Home() {
                 </HeaderContent>
             </Header>
 
+            { loading ? <Load /> : 
             <CarList 
                 data={cars}
-                keyExtractor={item => String(item.id)}
+                keyExtractor={item => item.id}
                 renderItem={({item}) => 
-                <Car data={item} onPress={handleCarDetails}/>}
-            />
+                <Car data={item} onPress={() => handleCarDetails(item)}/>}
+            />}
         </Container>
     )
 }
