@@ -63,7 +63,7 @@ export function CarDetails() {
             </Header>
 
             <CarImages>
-                <ImageSlider imagesUrl={['https://production.autoforce.com/uploads/used_model/profile_image/21174071/used_model_comprar-rs-6-pcd-avant-1165_95b6930e12.png']} />
+                <ImageSlider imagesUrl={car.photos} />
             </CarImages>
 
             <Content>
@@ -72,28 +72,29 @@ export function CarDetails() {
                         <Brand>
                             {car.brand}
                         </Brand>
-                        <Name>Huracan</Name>
+                        <Name>{car.name}</Name>
                     </Description>
 
                     <Rent>
-                        <Period>Ao dia</Period>
-                        <Price>R$ 580</Price>
+                        <Period>{car.rent.period}</Period>
+                        <Price>R$ {car.rent.price}</Price>
                     </Rent>
 
                 </Details>
 
                 <Accessories>
-                    <Accessory name="380Km/h" icon={speedSvg}/>
-                    <Accessory name="3.2s" icon={accelerationSvg}/>
-                    <Accessory name="80 HP" icon={forceSvg}/>
-                    <Accessory name="Gasolina" icon={gasolineSvg}/>
-                    <Accessory name="Auto" icon={exchangeSvg}/>
-                    <Accessory name="2 pessoas" icon={peopleSvg}/>
+                    {
+                        car.accessories.map(accessory => (
+                            <Accessory 
+                            key={accessory.type}
+                            name={accessory.name}
+                            icon={speedSvg}/>
+                        ))
+                        
+                    }
                 </Accessories>
                 <About>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias officia exercitationem,
-                    architecto vitae et tenetur suscipit quod animi perferendis blanditiis voluptates quis
-                    ex autem accusamus ipsam reprehenderit laborum esse culpa.
+                   {car.about}
                 </About>
 
             </Content>

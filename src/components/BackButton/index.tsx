@@ -7,6 +7,7 @@ import { Container } from './styles';
 
 interface Props {
     color?: string;
+    onPress: () => void;
 }
 
 export function BackButton({ color, ...rest }: Props) {
