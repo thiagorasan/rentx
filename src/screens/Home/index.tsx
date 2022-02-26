@@ -24,7 +24,7 @@ export function Home() {
     const navigation = useNavigation();
 
     function handleCarDetails(car: CarDTO) {
-        navigation.navigate('CarDetails', { car });
+        navigation.navigate('CarDetails' as any, { car });
     }
 
     useEffect(() =>{

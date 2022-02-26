@@ -53,13 +53,17 @@ export function SchedulingDetails() {
     const navigation = useNavigation();
 
     function handleConfirmRental() {
-        navigation.navigate('SchedulingComplete');
+        navigation.navigate('SchedulingComplete' as any);
+    }
+
+    function handleBack() {
+        navigation.goBack();
     }
 
     return (
         <Container>
             <Header>
-                <BackButton />
+                <BackButton onPress={handleBack}/>
 
             </Header>
 
