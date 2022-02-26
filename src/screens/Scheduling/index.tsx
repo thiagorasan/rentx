@@ -22,6 +22,7 @@ import { Alert, StatusBar } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { format } from 'date-fns/esm';
 import { getPlatformDate } from '../../utils/getPlatformDate';
+import { CarDTO } from '../../dtos/carDTO';
 
 interface RentalPeriod {
     startFormatted: string;
@@ -44,7 +45,7 @@ export function Scheduling() {
     const { car } = route.params as Params;
 
     function handleConfirmRental() {
-        if(!!rentalPeriod.startFormatted || !!rentalPeriod.endFormatted){
+        if(!rentalPeriod.startFormatted || !rentalPeriod.endFormatted){
             Alert.alert('Selecione o intervalo para alugar.');
         } else {
             navigation.navigate('SchedulingDetails', {
